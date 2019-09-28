@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .border-gray{border:1px solid #000}
+        #app{ width:500px;margin: 0 auto}
+    </style>
+</head>
+<body>
+<div id="app">
+    <img  :src="img" style="width: 250px;">
+    <ul style="display: inline-block;position: absolute">
+
+        颜色选择
+        <li style="list-style-type: none; height: 50px" v-for="(item,index) in ary" :key="index" @click="doClick(index)" :class="{'border-gray':current==index}" >
+            <img :src="item.url" width="30" height="40"  style="float: left;">
+            <p style="float: left">{{item.name}}</p>
+        </li>
+    </ul>
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        data(){
+            return{
+                ary:[
+                    {name:'灰蓝色迷你幻彩色小凳子',url:'https://gd4.alicdn.com/imgextra/i4/3330889140/O1CN01Kk5AmV2HOAb7CFgFV_!!3330889140.jpg_500x500.jpg'},
+                    {name:'薄荷绿迷你幻彩色小凳子',url:'https://gd4.alicdn.com/imgextra/i4/3330889140/O1CN01sIw9Hb2HOAb5CMLhJ_!!3330889140.jpg_500x500.jpg'},
+                    {name:'棕红色迷你幻彩色小凳子',url:'https://gd2.alicdn.com/imgextra/i2/3330889140/O1CN01b0hdCm2HOAbAKVPdW_!!3330889140.jpg_500x500.jpg'},
+                    {name:'藏青色迷你幻彩色小凳子',url:'https://gd1.alicdn.com/imgextra/i2/3330889140/O1CN01duffXW2HOAb7DLPjZ_!!3330889140.jpg_500x500.jpg'}],
+                current:-1,
+                img:"https://gd4.alicdn.com/imgextra/i4/3330889140/O1CN01Kk5AmV2HOAb7CFgFV_!!3330889140.jpg_500x500.jpg"
+            }
+        },
+        methods:{
+            doClick(index){
+                this.current=index;
+                this.img=this.ary[index].url
+
+
+            }
+        }
+    })
+</script>
+</body>
+</html>
